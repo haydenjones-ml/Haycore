@@ -3,7 +3,7 @@ module datapath (
         input  wire        rst,
         input  wire        branch,
         input  wire        jump,
-        input  wire        reg_dst,
+        input  wire        jalr,
         input  wire        we_reg,
         input  wire        alu_src,
         input  wire [1:0]  result_src,
@@ -28,7 +28,7 @@ module datapath (
     wire [31:0] wd_rf;
     wire        zero;
     // Implement other branch types
-    wire        take_branch;
+    reg        take_branch;
 
     wire [2:0] funct3 = instr[14:12];
     wire signed [31:0] rs1_signed = alu_pa;
@@ -68,7 +68,7 @@ module datapath (
             .y              (pc_plus4)
         );
 
-    adder pc_target (
+    adder pc_target_adder (
             .a              (pc_current),
             .b              (ext_imm),
             .y              (pc_target)
@@ -78,7 +78,7 @@ module datapath (
     imm_gen imm_gen (
             .instr          (instr),
             .imm_type       (imm_type),
-            .ext_imm        (ext_imm)
+            .imm_ext       (ext_imm)
         );
 
     // --- RF Logic --- //
