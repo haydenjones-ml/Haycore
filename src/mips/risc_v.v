@@ -13,10 +13,10 @@ module risc_v (
     
     wire       branch;
     wire       jump;
+    wire       jalr;
     wire       reg_dst;
     wire       we_reg;
     wire       alu_src;
-    wire       dm2reg;
     wire [1:0] result_src;
     wire [2:0] imm_type;
     wire [3:0] alu_ctrl;
@@ -51,7 +51,7 @@ module risc_v (
             .we_reg         (we_reg),
             .alu_src        (alu_src),
             .we_dm          (we_dm),
-            .dm2reg         (result_src),
+            .result_src     (result_src),
             .imm_type       (imm_type),
             .alu_ctrl       (alu_ctrl)
         );
