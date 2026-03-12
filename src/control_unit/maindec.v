@@ -7,12 +7,12 @@ module maindec (
     output wire       alu_src,
     output wire       we_dm,
     output wire [1:0] result_src, // 00=ALU, 01=Mem, 10=PC+4
-    output wire [2:0] ImmSrc,
+    output wire [2:0] imm_type,
     output wire [1:0] alu_op
 );
 
     reg [12:0] ctrl;
-    assign {branch, jump, jalr, we_reg, alu_src, we_dm, result_src, ImmSrc, alu_op} = ctrl;
+    assign {branch, jump, jalr, we_reg, alu_src, we_dm, result_src, imm_type, alu_op} = ctrl;
 
     always @(*) begin
         case (opcode)
