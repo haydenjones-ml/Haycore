@@ -1,4 +1,4 @@
-module mips (
+module risc_v (
         input  wire        clk,
         input  wire        rst,
         input  wire [4:0]  ra3,
@@ -17,17 +17,20 @@ module mips (
     wire       we_reg;
     wire       alu_src;
     wire       dm2reg;
-    wire [2:0] alu_ctrl;
+    wire [1:0] result_src;
+    wire [2:0] imm_type;
+    wire [3:0] alu_ctrl;
 
     datapath dp (
             .clk            (clk),
             .rst            (rst),
             .branch         (branch),
             .jump           (jump),
-            .reg_dst        (reg_dst),
+            .jalr           (jalr),
             .we_reg         (we_reg),
             .alu_src        (alu_src),
-            .dm2reg         (dm2reg),
+            .result_src     (result_src),
+            .imm_type       (imm_type),
             .alu_ctrl       (alu_ctrl),
             .ra3            (ra3),
             .instr          (instr),
@@ -39,15 +42,17 @@ module mips (
         );
 
     controlunit cu (
-            .opcode         (instr[31:26]),
-            .funct          (instr[5:0]),
+            .opcode         (instr[6:0]),
+            .funct3          (instr[14:12]),
+            .funct7_5_bit   (instr[30]),
             .branch         (branch),
             .jump           (jump),
-            .reg_dst        (reg_dst),
+            .jalr           (jalr),
             .we_reg         (we_reg),
             .alu_src        (alu_src),
             .we_dm          (we_dm),
-            .dm2reg         (dm2reg),
+            .dm2reg         (result_src),
+            .imm_type       (imm_type),
             .alu_ctrl       (alu_ctrl)
         );
 

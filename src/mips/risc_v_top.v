@@ -1,4 +1,4 @@
-module mips_top (
+module risc_v_top (
         input  wire        clk,
         input  wire        rst,
         input  wire [4:0]  ra3,
@@ -13,7 +13,7 @@ module mips_top (
 
     wire [31:0] DONT_USE;
 
-    mips mips (
+    risc_v risc_v (
             .clk            (clk),
             .rst            (rst),
             .ra3            (ra3),
