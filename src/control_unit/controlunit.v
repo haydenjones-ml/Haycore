@@ -4,12 +4,12 @@ module controlunit (
         input  wire        funct7_5_bit,
         output wire        branch,
         output wire        jump,
-        output wire        reg_dst,
+        output wire        jalr,
         output wire        we_reg,
         output wire        alu_src,
         output wire        we_dm,
         output wire        dm2reg,
-        output wire [2:0]  alu_ctrl
+        output wire [3:0]  alu_ctrl
     );
     
     wire [1:0] alu_op;
@@ -18,7 +18,7 @@ module controlunit (
         .opcode         (opcode),
         .branch         (branch),
         .jump           (jump),
-        .reg_dst        (reg_dst),
+        .jalr           (jalr),
         .we_reg         (we_reg),
         .alu_src        (alu_src),
         .we_dm          (we_dm),
