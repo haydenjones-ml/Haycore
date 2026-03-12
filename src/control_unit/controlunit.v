@@ -1,6 +1,7 @@
 module controlunit (
-        input  wire [5:0]  opcode,
-        input  wire [5:0]  funct,
+        input  wire [6:0]  opcode,
+        input  wire [2:0]  funct3,
+        input  wire        funct7_5_bit,
         output wire        branch,
         output wire        jump,
         output wire        reg_dst,
@@ -27,7 +28,8 @@ module controlunit (
 
     auxdec ad (
         .alu_op         (alu_op),
-        .funct          (funct),
+        .funct3         (funct3),
+        .funct7_5_bit   (funct7_5_bit),
         .alu_ctrl       (alu_ctrl)
     );
 
