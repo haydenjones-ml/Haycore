@@ -2,6 +2,7 @@ module controlunit (
         input  wire [6:0]  opcode,
         input  wire [2:0]  funct3,
         input  wire        funct7_5_bit,
+        input  wire        funct7_0_bit,
         output wire        branch,
         output wire        jump,
         output wire        jalr,
@@ -32,6 +33,7 @@ module controlunit (
         .alu_op         (alu_op),
         .funct3         (funct3),
         .funct7_5_bit   (funct7_5_bit),
+        .funct7_0_bit   (funct7_0_bit),
         .alu_ctrl       (alu_ctrl)
     );
 
