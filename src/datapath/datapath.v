@@ -51,7 +51,7 @@ module datapath (
     end
     
     assign pc_src = jump | take_branch;
-    assign pc_next = (pc_src) ? pc_target : pc_plus4;
+    assign pc_next = (pc_src) ? jump : pc_plus4;
     assign pc_jump = jalr ? {alu_out[31:1], 1'b0} : pc_target;
     
     // --- PC Logic --- //
@@ -100,7 +100,7 @@ module datapath (
     mux2 #(32) alu_pb_mux (
             .sel            (alu_src),
             .a              (wd_dm),
-            .b              (sext_imm),
+            .b              (ext_imm),
             .y              (alu_pb)
         );
 

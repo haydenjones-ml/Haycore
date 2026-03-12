@@ -7,7 +7,7 @@ module imm_gen (
 // REFERENCE FOR CONCATENATION: https://www.cs.sfu.ca/~ashriram/Courses/CS295/assets/notebooks/RISCV/RISCV_CARD.pdf
 
     always @(*) begin
-        case (ImmSrc)
+        case (imm_type)
             // 3'b000: I-Type
             3'b000: imm_ext = {{20{instr[31]}}, instr[31:20]};
 
