@@ -27,8 +27,32 @@ module datapath (
     wire [31:0] alu_pb;
     wire [31:0] wd_rf;
     wire        zero;
+    // Implement other branch types
+    wire        take_branch;
+
+    wire [2:0] funct3 = instr[14:12];
+    wire signed [31:0] rs1_signed = alu_pa;
+    wire signed [31:0] rs2_signed = alu_pb;
+
+    always @(*) begin
+        if (branch) begin
+        case(funct3)
+            3'b000: take_branch = (rs1_signed == rs2_signed); // BEQ
+            3'b001: take_branch = (rs1_signed != rs2_signed); // BNE
+            3'b100: take_branch = (rs1_signed < rs2_signed); // BLT
+            3'b101: take_branch = (rs1_signed >= rs2_signed); // BGE
+            3'b110: take_branch = (alu_pa < alu_pb); // BLTU
+            3'b111: take_branch = (alu_pa >= alu_pb); // BGEU
+            default: take_branch = 1'b0; // Default case (should not happen)
+        endcase
+    end else begin
+        take_branch = 1'b0;
+        end
+    end
     
     assign pc_src = jump | branch & zero;
+    assign pc_next = (pc_src) ? pc_target : pc_plus4;
+    assign pc_jump = jalr ? {alu_out[31:1], 1'b0} : pc_target;
     
     // --- PC Logic --- //
     dreg pc_reg (
