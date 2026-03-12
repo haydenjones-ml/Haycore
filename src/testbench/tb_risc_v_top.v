@@ -67,4 +67,4 @@ module tb_riscv_top;
     end
 endmodule
 
-// command to run: iverilog -o riscv_sim src/testbench/tb_risc_v_top.v src/mips/*.v src/datapath/*.v src/control_unit/*.v src/memory/*.v
+// command to run: iverilog -o riscv_sim src/testbench/tb_risc_v_top.v src/instructions/*.v src/datapath/*.v src/control_unit/*.v src/memory/*.v
