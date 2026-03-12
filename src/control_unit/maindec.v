@@ -2,11 +2,11 @@ module maindec (
     input  wire [6:0] opcode,
     output wire       branch,
     output wire       jump,
-    output wire       jalr,       // NEW: Signals a JALR instruction
+    output wire       jalr,
     output wire       we_reg,
     output wire       alu_src,
     output wire       we_dm,
-    output wire [1:0] result_src, // EXPANDED: 00=ALU, 01=Mem, 10=PC+4
+    output wire [1:0] result_src, // 00=ALU, 01=Mem, 10=PC+4
     output wire [2:0] ImmSrc,
     output wire [1:0] alu_op
 );
@@ -17,7 +17,7 @@ module maindec (
     always @(*) begin
         case (opcode)
             7'b0110011: ctrl = 13'b0_0_0_1_0_0_00_000_10; // R-type
-            7'b0010011: ctrl = 13'b0_0_0_1_1_0_00_000_11; // I-type ALU
+            7'b0010011: ctrl = 13'b0_0_0_1_1_0_00_000_11; // I-type
             7'b0000011: ctrl = 13'b0_0_0_1_1_0_01_000_00; // Loads
             7'b0100011: ctrl = 13'b0_0_0_0_1_1_00_001_00; // Saves
             7'b1100011: ctrl = 13'b1_0_0_0_0_0_00_010_01; // Branches

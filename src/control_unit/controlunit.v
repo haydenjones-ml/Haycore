@@ -8,7 +8,8 @@ module controlunit (
         output wire        we_reg,
         output wire        alu_src,
         output wire        we_dm,
-        output wire        dm2reg,
+        output wire [1:0]  result_src,
+        output wire [2:0]  imm_type,
         output wire [3:0]  alu_ctrl
     );
     
@@ -22,7 +23,8 @@ module controlunit (
         .we_reg         (we_reg),
         .alu_src        (alu_src),
         .we_dm          (we_dm),
-        .dm2reg         (dm2reg),
+        .result_src     (result_src),
+        .imm_type       (imm_type),
         .alu_op         (alu_op)
     );
 
