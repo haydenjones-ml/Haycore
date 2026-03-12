@@ -91,11 +91,6 @@ module datapath (
             .rst            (rst)
         );
 
-    signext se (
-            .a              (instr[15:0]),
-            .y              (sext_imm)
-        );
-
     // --- ALU Logic --- //
     mux2 #(32) alu_pb_mux (
             .sel            (alu_src),
