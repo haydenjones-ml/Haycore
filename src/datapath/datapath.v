@@ -50,7 +50,7 @@ module datapath (
         end
     end
     
-    assign pc_src = jump | branch & zero;
+    assign pc_src = jump | take_branch;
     assign pc_next = (pc_src) ? pc_target : pc_plus4;
     assign pc_jump = jalr ? {alu_out[31:1], 1'b0} : pc_target;
     
