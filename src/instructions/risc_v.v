@@ -45,6 +45,7 @@ module risc_v (
             .opcode         (instr[6:0]),
             .funct3          (instr[14:12]),
             .funct7_5_bit   (instr[30]),
+            .funct7_0_bit   (instr[25]),
             .branch         (branch),
             .jump           (jump),
             .jalr           (jalr),
