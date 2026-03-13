@@ -26,6 +26,7 @@ module datapath (
     wire [31:0] alu_pa;
     wire [31:0] alu_pb;
     wire [31:0] wd_rf;
+    wire [31:0] pc_jump;
     wire        zero;
     // Implement other branch types
     reg        take_branch;
@@ -50,8 +51,8 @@ module datapath (
         end
     end
     
-    assign pc_src = jump | take_branch;
-    assign pc_next = (pc_src) ? jump : pc_plus4;
+    assign pc_src = pc_jump | take_branch;
+    assign pc_next = (pc_src) ? pc_jump : pc_plus4;
     assign pc_jump = jalr ? {alu_out[31:1], 1'b0} : pc_target;
     
     // --- PC Logic --- //
