@@ -12,7 +12,7 @@ module tb_riscv();
     wire [31:0] out_x1, out_x2, out_x3, out_x4;
     wire [31:0] out_x5, out_x6, out_x7, out_x8;
     
-    riscv_top dut (
+    risc_v_top dut (
         .clk        (clk),
         .rst        (rst),
         .pc_current (pc_current),
