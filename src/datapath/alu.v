@@ -15,7 +15,7 @@ module alu (
     always @ (op, a, b) begin
         case (op)
             5'b0_0000: y = a + b;
-            5'b1_1000: y = a - b;
+            5'b0_1000: y = a - b;
             5'b0_0001: y = a << b; // SLL
             5'b0_0010: y = $signed(a) < $signed(b) ? 1 : 0; // SLT(I)
             5'b0_0011: y = a < b ? 1 : 0; // SLTU(I)
