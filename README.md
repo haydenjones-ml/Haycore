@@ -1,7 +1,7 @@
 # Haycore - RISC-V Processor Project
 ## Overview
 Thanks for checking out this project! Welcome to Haycore—a simple, single-cycle, 32-bit processor designed to execute RISC-V instructions.
-
+![Schematic for initial single-cycle processor design](image.png)
 ## How to use
 As there is no compiler (since this is only a processor design with no external components), instructions are loaded by providing pre-compiled RISC-V. The easiest way to see a demonstration is by using the included, pre-written testbench. However, by replacing `tb_risc_v_top.v` with your own test bench and memfile.dat with your own precompiled RISC-V you can test this however you would want.
 
