@@ -19,7 +19,7 @@ module risc_v (
     wire       alu_src;
     wire [1:0] result_src;
     wire [2:0] imm_type;
-    wire [3:0] alu_ctrl;
+    wire [4:0] alu_ctrl;
 
     datapath dp (
             .clk            (clk),

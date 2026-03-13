@@ -11,7 +11,7 @@ module controlunit (
         output wire        we_dm,
         output wire [1:0]  result_src,
         output wire [2:0]  imm_type,
-        output wire [3:0]  alu_ctrl
+        output wire [4:0]  alu_ctrl
     );
     
     wire [1:0] alu_op;

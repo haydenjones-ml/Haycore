@@ -12,7 +12,7 @@ module auxdec (
 wire valid_modifier = (alu_op == 2'b10) || (alu_op == 2'b11 && funct3 == 3'b101);
     
     // Combine the validated modifier bit and funct3 into a single 4-bit wire
-    wire [3:0] aux_op = {valid_modifier ? funct7_5_bit : 1'b0, funct3};
+    wire [4:0] aux_op = {valid_modifier ? funct7_5_bit : 1'b0, funct3};
 
     always @(*) begin
         case (alu_op)
